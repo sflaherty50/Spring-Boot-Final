@@ -14,49 +14,47 @@ import javax.persistence.OneToOne;
 
 public class Transaction {
 	
-	private Long TransactionID;
-	private Long UserID;
-	private Long ListingID;
+	private Long id;
+	private Users user;
+	private Listings listing;
 	private Date TransactionDate;
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getTransactionID() {
+		return id;
+}
+
+	public void setTransactionID(Long id) {
+		this.id = id;
+	}
 
 
-		public Long getUserID() {
-			return UserID;
+		public Users getUserID() {
+			return user;
 		}
 	 
 
-		public void setUserID(Long userID) {
-			UserID = userID;
+		public void setUserID(Users user) {
+			this.user = user;
 		}
 	
 		@OneToOne(cascade = CascadeType.ALL)
 		@JoinColumn(name = "id")
-		public Long getListingID() {
-			return ListingID;
+		public Listings getListingID() {
+			return listing;
 		}
 		
-		public void setListingID(Long ListingID) {
-			ListingID = getListingID();
+		public void setListingID(Listings listing) {
+			this.listing = listing;
 		}
-		
-		public Date getTransactionDate() {
-			return TransactionDate;
-		}
-		public void setTransactionDate(Date transactionDate) {
-			TransactionDate = transactionDate;
-		}
+//		public Date getTransactionDate() {
+//			return TransactionDate;
+//		}
+//		public void setTransactionDate(Date transactionDate) {
+//			TransactionDate = transactionDate;
+//		}
 
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		public Long getTransactionID() {
-			return TransactionID;
-		}
-
-		public void setTransactionID(Long transactionID) {
-			TransactionID = transactionID;
-		}
-		}	
-		
+}
 		
 		

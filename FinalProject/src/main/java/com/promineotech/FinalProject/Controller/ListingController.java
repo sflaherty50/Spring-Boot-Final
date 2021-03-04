@@ -49,6 +49,5 @@ public class ListingController {
 				return new ResponseEntity<Object>("Unable to delete listing", HttpStatus.NOT_FOUND);
 			}
 		}
-}
-		
+}		
 

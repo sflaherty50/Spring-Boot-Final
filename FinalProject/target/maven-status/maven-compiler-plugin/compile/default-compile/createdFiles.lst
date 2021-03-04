@@ -1,3 +1,4 @@
+com\promineotech\FinalProject\Util\ListingCategories.class
 com\promineotech\FinalProject\Service\ListingService.class
 com\promineotech\FinalProject\Repository\UserControllerRepository.class
 com\promineotech\FinalProject\Repository\ListingRepository.class

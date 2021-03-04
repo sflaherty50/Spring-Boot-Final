@@ -18,21 +18,22 @@ import javax.persistence.OneToOne;
 @Entity
 public class Listings {
 	
-	private Long ListingID;
-	private Set<ListingCategories> ListingCategories;
+	private Long id;
+	private Set<ListingCategories> categories;
 	private Users user;
 	private double ListingPrice;
 	private Date ListingDate;
-	private boolean ListingStatus;
+
+	private boolean listingStatus;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getListingID() {
-		return ListingID;
+		return id;
 	}
 	
-	public void setListingID(Long listingID) {
-		ListingID = listingID;
+	public void setListingID(Long id) {
+		this.id = id;
 	}
 	
 	
@@ -57,24 +58,30 @@ public class Listings {
 	public void setListingDate(Date listingDate) {
 		ListingDate = listingDate;
 	}
+
+	@ManyToMany
+	@JoinTable(
+			name = "listings_by_categories",
+			joinColumns = @JoinColumn(name = "listingid"),
+			inverseJoinColumns = @JoinColumn(name = "categoryid"))
+	public Set<ListingCategories> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<ListingCategories> categories) {
+		this.categories = categories;
+	}
+
 	public boolean isListingStatus() {
-		return ListingStatus;
-	}
-	public void setListingSold(boolean listingStatus) {
-		ListingStatus = listingStatus;
+		return listingStatus;
 	}
 
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	@JoinTable(name = "listing_by_categories",
-//			joinColumns = @JoinColumn(name = "listingid", referencedColumnName = "ListingID"),
-//			inverseJoinColumns = @JoinColumn(name = "listingcategoryid", referencedColumnName = "ListingCategoryID"))
-	public Set<ListingCategories> getListingCategories() {
-		return ListingCategories;
+	public void setListingStatus(boolean listingStatus) {
+		this.listingStatus = listingStatus;
 	}
 
-	public void setListingCategories(Set<ListingCategories> listingCategories) {
-		ListingCategories = listingCategories;
-	}
+
+
 	
 
 }

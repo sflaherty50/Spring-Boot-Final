@@ -12,30 +12,32 @@ import javax.persistence.OneToMany;
 @Entity
 public class ListingCategories {
 	
-	private Long ListingCategoryID;
-	private String Description;
+	private Long id;
+	private String description;
 	private Set<Listings> listings;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getListingCategoryID() {
-		return ListingCategoryID;
+		return id;
 	}
 	
-	public void setListingCategoryID(Long listingCategoryID) {
-		ListingCategoryID = listingCategoryID;
+	public void setListingCategoryID(Long id) {
+
+		this.id = id;
 	}
 
 	
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		Description = description;
+
+		this.description = description;
 	}
 	
-//	@ManyToMany(mappedBy = "listings")
+	@ManyToMany(mappedBy = "categories")
 	public Set<Listings> getListing() {
 		return listings;
 	}

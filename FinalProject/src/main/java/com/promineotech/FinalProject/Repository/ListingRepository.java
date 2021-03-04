@@ -6,6 +6,6 @@ import com.promineotech.FinalProject.Entity.Listings;
 
 public interface ListingRepository extends CrudRepository<Listings, Long>{
 
-	Listings findAll(Long listingCategoriesID);
+//	Listings findAll(Long listingCategoriesID);
 
 }

@@ -3,16 +3,19 @@ import javax.naming.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.stereotype.Service;
+
 import com.promineotech.FinalProject.Entity.Credentials;
 import com.promineotech.FinalProject.Entity.Users;
 import com.promineotech.FinalProject.Repository.UserControllerRepository;
 
+@Service
 public class UserService {
 	@Autowired
 	private UserControllerRepository userControllerRepository;
 	public Users register(Credentials cred) throws AuthenticationException {
 		Users user = new Users();
-		user.setUserName(cred.getUserName());
+		user.setUsername(cred.getUserName());
 		user.setHash(BCrypt.hashpw(cred.getPassword(), BCrypt.gensalt()));
 		try {		
 		userControllerRepository.save(user);
@@ -29,4 +32,3 @@ public class UserService {
 		throw new AuthenticationException("Incorrect username or password");
 	}
 }
-

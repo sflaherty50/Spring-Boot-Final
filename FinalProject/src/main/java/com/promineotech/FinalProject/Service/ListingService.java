@@ -3,13 +3,14 @@ package com.promineotech.FinalProject.Service;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.promineotech.FinalProject.Entity.ListingCategories;
 import com.promineotech.FinalProject.Entity.Listings;
 import com.promineotech.FinalProject.Repository.ListingRepository;
 
 
-
+@Service
 public class ListingService {
 	
 	private static final Logger logger = LogManager.getLogger(ListingService.class);
@@ -25,9 +26,9 @@ public class ListingService {
 		return repo.save(listing);
 	}
 	
-	public Listings getListing(Long ListingCategoriesID) {
-		return repo.findAll(ListingCategoriesID);
-	}
+	//public Listings getListing(Long ListingCategoriesID) {
+	//	return repo.findAll(ListingCategoriesID);
+	//}
 	
 	
 	public Listings updateListings(Listings listings, Long ListingID) throws Exception {
@@ -58,11 +59,6 @@ public class ListingService {
 	
 	
 }
-	
-	
-	
-	
-	
 	
 	
 	
