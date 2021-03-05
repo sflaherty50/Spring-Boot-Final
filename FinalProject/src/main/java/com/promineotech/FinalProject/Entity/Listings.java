@@ -1,6 +1,6 @@
 package com.promineotech.FinalProject.Entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -22,9 +22,9 @@ public class Listings {
 	private Set<ListingCategories> categories;
 	private Users user;
 	private double ListingPrice;
-	private Date ListingDate;
+	private LocalDate ListingDate;
 
-	private boolean listingStatus;
+	//private boolean listingStatus;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,11 +52,14 @@ public class Listings {
 	public void setListingPrice(double listingPrice) {
 		ListingPrice = listingPrice;
 	}
-	public Date getListingDate() {
-		return ListingDate;
+	
+	public LocalDate getListingDate() {
+		return ListingDate.now();
 	}
-	public void setListingDate(Date listingDate) {
+	
+	public void setListingDate(LocalDate listingDate) {
 		ListingDate = listingDate;
+		
 	}
 
 	@ManyToMany
@@ -72,13 +75,13 @@ public class Listings {
 		this.categories = categories;
 	}
 
-	public boolean isListingStatus() {
-		return listingStatus;
-	}
-
-	public void setListingStatus(boolean listingStatus) {
-		this.listingStatus = listingStatus;
-	}
+//	public boolean isListingStatus() {
+//		return listingStatus;
+//	}
+//
+//	public void setListingStatus(boolean listingStatus) {
+//		this.listingStatus = listingStatus;
+//	}
 
 
 
