@@ -15,15 +15,16 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
+
 @Entity
 public class Users {
 
 	private Long id; 
 	private String hash;
 	private String username;
-
-	@JsonIgnore
 	private Set<Listings> listings;
+
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

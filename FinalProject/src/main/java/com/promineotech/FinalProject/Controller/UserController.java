@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.promineotech.FinalProject.Entity.Credentials;
 import com.promineotech.FinalProject.Service.UserService;
-
 	@RestController
 	@RequestMapping("/users")
 	public class UserController {

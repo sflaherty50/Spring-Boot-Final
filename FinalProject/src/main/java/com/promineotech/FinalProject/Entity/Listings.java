@@ -1,9 +1,8 @@
 package com.promineotech.FinalProject.Entity;
-
 import java.time.LocalDate;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,26 +13,24 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 @Entity
 public class Listings {
 	
-	private Long id;
+	private Long listing_id;
 	private Set<ListingCategories> categories;
 	private Users user;
 	private double ListingPrice;
 	private LocalDate ListingDate;
-
-	//private boolean listingStatus;
 	
 	@Id
+	@Column(name = "listing_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getListingID() {
-		return id;
+		return listing_id;
 	}
 	
 	public void setListingID(Long id) {
-		this.id = id;
+		this.listing_id = id;
 	}
 	
 	
@@ -61,30 +58,19 @@ public class Listings {
 		ListingDate = listingDate;
 		
 	}
-
-	@ManyToMany
+	
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "listings_by_categories",
-			joinColumns = @JoinColumn(name = "listingid"),
-			inverseJoinColumns = @JoinColumn(name = "categoryid"))
+			joinColumns = @JoinColumn(name = "listing_id", referencedColumnName = "listing_id"),
+			inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
 	public Set<ListingCategories> getCategories() {
 		return categories;
 	}
-
+	
 	public void setCategories(Set<ListingCategories> categories) {
 		this.categories = categories;
 	}
 
-//	public boolean isListingStatus() {
-//		return listingStatus;
-//	}
-//
-//	public void setListingStatus(boolean listingStatus) {
-//		this.listingStatus = listingStatus;
-//	}
-
-
-
 	
-
 }

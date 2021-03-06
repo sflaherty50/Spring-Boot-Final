@@ -1,15 +1,12 @@
 package com.promineotech.FinalProject.Entity;
 
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 
 
 public class Transaction {
@@ -17,7 +14,7 @@ public class Transaction {
 	private Long id;
 	private Users user;
 	private Listings listing;
-	private Date TransactionDate;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,13 +45,6 @@ public class Transaction {
 		public void setListingID(Listings listing) {
 			this.listing = listing;
 		}
-//		public Date getTransactionDate() {
-//			return TransactionDate;
-//		}
-//		public void setTransactionDate(Date transactionDate) {
-//			TransactionDate = transactionDate;
-//		}
+
 
 }
-		
-		
