@@ -1,6 +1,6 @@
 package com.promineotech.FinalProject.Entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,21 +15,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 @Entity
 public class Listings {
 	
 	private Long id;
 	private Set<ListingCategories> categories;
-	
-	private double ListingPrice;
-	private LocalDate ListingDate;
-
-	//private boolean listingStatus;
-	@JsonIgnore
 	private Users user;
+	private double ListingPrice;
+	private Date ListingDate;
+
+	private boolean listingStatus;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,11 +37,10 @@ public class Listings {
 	}
 	
 	
-
 	@ManyToOne
-	@JoinColumn(name = "userid")
+	@JoinColumn(name = "userId")
 	public Users getUser() {
-		return user;
+	  return user;
 	}
 	public void setUser(Users user) {
 	  this.user = user;
@@ -58,14 +52,11 @@ public class Listings {
 	public void setListingPrice(double listingPrice) {
 		ListingPrice = listingPrice;
 	}
-	
-	public LocalDate getListingDate() {
-		return ListingDate.now();
+	public Date getListingDate() {
+		return ListingDate;
 	}
-	
-	public void setListingDate(LocalDate listingDate) {
+	public void setListingDate(Date listingDate) {
 		ListingDate = listingDate;
-		
 	}
 
 	@ManyToMany
@@ -81,13 +72,13 @@ public class Listings {
 		this.categories = categories;
 	}
 
-//	public boolean isListingStatus() {
-//		return listingStatus;
-//	}
-//
-//	public void setListingStatus(boolean listingStatus) {
-//		this.listingStatus = listingStatus;
-//	}
+	public boolean isListingStatus() {
+		return listingStatus;
+	}
+
+	public void setListingStatus(boolean listingStatus) {
+		this.listingStatus = listingStatus;
+	}
 
 
 

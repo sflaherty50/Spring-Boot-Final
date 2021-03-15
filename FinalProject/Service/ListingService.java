@@ -1,8 +1,5 @@
 package com.promineotech.FinalProject.Service;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.promineotech.FinalProject.Entity.ListingCategories;
 import com.promineotech.FinalProject.Entity.Listings;
-import com.promineotech.FinalProject.Repository.ListingCategoriesRepo;
 import com.promineotech.FinalProject.Repository.ListingRepository;
 
 
@@ -22,27 +18,12 @@ public class ListingService {
 	@Autowired
 	private ListingRepository repo;
 	
-	@Autowired
-	private ListingCategoriesRepo ListCatRepo;
-	
 	public Iterable<Listings> getListings() {
 		return repo.findAll();
 	}
 	
 	public Listings createListing(Listings listing) {
-	Listings newlistings = new Listings();
-	Set<ListingCategories> list=new HashSet<ListingCategories>();
-	list=listing.getCategories();
-	logger.info("In create Listing" + list);
-	newlistings.setUser(listing.getUser());
-//	newlistings.setCategories(listing.getCategories());
-	newlistings.setListingPrice(listing.getListingPrice());
-	logger.info("In create Listing" + newlistings.getUser());
-	newlistings.getCategories().addAll(list);
-	
-
-	
-		return repo.save(newlistings);
+		return repo.save(listing);
 	}
 	
 	//public Listings getListing(Long ListingCategoriesID) {
@@ -78,6 +59,9 @@ public class ListingService {
 	
 	
 }
+	
+	
+	
 	
 	
 	

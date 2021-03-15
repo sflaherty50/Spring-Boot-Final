@@ -21,15 +21,13 @@ public class ListingController {
 		@Autowired
 		private ListingService service;
 		
-		
-		
 		@RequestMapping(method=RequestMethod.GET)
 		public ResponseEntity<Object> getListings() {
 			return new ResponseEntity<Object>(service.getListings(), HttpStatus.OK);
 		}
 		
 		@RequestMapping(method=RequestMethod.POST)
-		public ResponseEntity<Object> createListings(@RequestBody Listings listings) {		
+		public ResponseEntity<Object> createListings(@RequestBody Listings listings) {
 			return new ResponseEntity<Object>(service.createListing(listings), HttpStatus.CREATED);
 		}
 		
